@@ -29,7 +29,7 @@ const fetch = (startDate, endDate) => {
     if (endDate) ref = ref.endAt(endDate)
 
     ref.once("value", function (data) {
-      resolve(data.val() || {})
+      resolve(data.val() || [])
     });
   })
 }
