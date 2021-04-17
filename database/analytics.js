@@ -1,6 +1,6 @@
 
 const db = require("./firebase");
-const analytics = db.ref('analytics')
+
 
 /**
  * 
@@ -8,6 +8,7 @@ const analytics = db.ref('analytics')
  * @returns {string} saved data id
  */
 const save = (data) => {
+  const analytics = db.ref('analytics')
   let ref = analytics.push()
   ref.set(data)
   return ref.key
@@ -22,7 +23,9 @@ const save = (data) => {
  * @returns {Promise<any>}
  */
 const fetch = (startDate, endDate) => {
+  const analytics = db.ref('analytics')
   return new Promise(resolve => {
+    
     let ref = analytics.orderByChild('date')
 
     if (startDate) ref = ref.startAt(startDate)
